@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('dockerHub')  // Docker Hub credentials
-        EC2_SSH_CREDENTIALS = credentials('EC2SSH')        // EC2 SSH credentials
-        DOCKER_IMAGE = "taharamakda/chatapp"
-        EC2_INSTANCE_IP = "54.89.215.128"             // EC2 instance public IP
+        DOCKER_HUB_CREDENTIALS = credentials('dockerHub')  
+        EC2_SSH_CREDENTIALS = credentials('EC2SSH')      
+        DOCKER_IMAGE = "taharamakda/chatapp" 
+        EC2_INSTANCE_IP = "your-instance-ip"            
     }
 
   stages {
@@ -54,7 +54,7 @@ pipeline {
             // SSH into the EC2 instance and pull & run the Docker image
             sshagent(['EC2SSH']) {
                  sh '''
-ssh -o StrictHostKeyChecking=no ubuntu@54.89.215.128 <<EOF
+ssh -o StrictHostKeyChecking=no ubuntu@your-instance-ip <<EOF
 docker pull taharamakda/chatapp:latest
 docker stop chatapp || true
 docker rm chatapp || true
