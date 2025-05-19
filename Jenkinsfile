@@ -1,3 +1,4 @@
+// Pipeline set up
 pipeline {
     agent any
 
