@@ -72,9 +72,10 @@ EOF
 
     post {
         always {
-            node{
+            node {
             // Clean up workspace after the pipeline
             cleanWs()
         }
     }
+}
 }
